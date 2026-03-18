@@ -1,4 +1,4 @@
-import BookViewer from "@/components/BookViewer";
+import BookViewerWrapper from "@/components/BookViewerWrapper";
 
 export default function Books() {
   return (
@@ -7,7 +7,7 @@ export default function Books() {
         <h2 className="font-serif text-4xl text-grape">Grumpy Grape</h2>
         <p className="text-ink/50 text-sm tracking-widest uppercase mt-2">by Grace Benz</p>
       </div>
-      <BookViewer file="/Grumpy_boardBook_March9_website.pdf" />
+      <BookViewerWrapper file="/Grumpy_boardBook_March9_website.pdf" />
     </div>
   );
 }
