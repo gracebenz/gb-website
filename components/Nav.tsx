@@ -24,7 +24,7 @@ export default function Nav() {
             className={`px-5 py-2 text-sm tracking-widest uppercase transition-all duration-200 rounded-full ${
               isActive
                 ? "bg-lavender text-slate font-medium"
-                : "text-lavender-mid hover:text-ink hover:bg-lavender/40"
+                : "text-lavender-mid hover:text-slate hover:bg-lavender/40"
             }`}
           >
             {tab.label}
