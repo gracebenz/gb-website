@@ -20,7 +20,7 @@ const projects = [
     tagColor: "bg-amber/20 text-amber",
   },
   {
-    title: "Vibe Coded Projects",
+    title: "Pet Projects",
     description: "Little experiments in code and creativity.",
     href: "/projects",
     color: "bg-sage/20",
