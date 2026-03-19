@@ -4,7 +4,7 @@ const projects = [
     description:
       "A party game for 3–10 players. Everyone picks a secret nickname — then tries to guess each other's before their own is revealed. Conquer your friends, build an empire.",
     tags: ["React Native", "Expo", "Party Game"],
-    url: "https://empire-orcin.vercel.app",
+    url: "https://empire.gracebenz.com",
     cta: "Play Now",
   },
 ];
