@@ -49,35 +49,37 @@ export default function RootLayout({
           </footer>
 
           {/* Bottom garden — fixed, behind all content */}
-          <div className="fixed bottom-0 left-0 right-0 pointer-events-none overflow-hidden -z-10" style={{ height: 340 }}>
+          <div className="fixed bottom-0 left-0 right-0 pointer-events-none overflow-hidden -z-10" style={{ height: 500 }}>
 
             {/* ── LEFT SIDE ── */}
-            <Image src="/bush1.png" alt="" width={580} height={435} style={{ position: 'absolute', bottom: -50, left: -30, mixBlendMode: 'multiply' }} />
-            <Image src="/grass3.png" alt="" width={130} height={100} style={{ position: 'absolute', bottom: -12, left: 280, mixBlendMode: 'multiply' }} />
+            {/* bush1 is tall and fills its PNG — small negative bottom to clip whitespace */}
+            <Image src="/bush1.png" alt="" width={580} height={435} style={{ position: 'absolute', bottom: -15, left: -20 }} />
+            <Image src="/grass3.png" alt="" width={130} height={100} style={{ position: 'absolute', bottom: -8, left: 290 }} />
 
-            {/* Orange daisy cluster */}
-            <Image src="/flower2.png" alt="" width={78} height={135} style={{ position: 'absolute', bottom: -20, left: 355, transform: 'rotate(-9deg)', mixBlendMode: 'multiply' }} />
-            <Image src="/flower2.png" alt="" width={88} height={152} style={{ position: 'absolute', bottom: -14, left: 390, mixBlendMode: 'multiply' }} />
-            <Image src="/flower2.png" alt="" width={72} height={124} style={{ position: 'absolute', bottom: -22, left: 428, transform: 'rotate(11deg)', mixBlendMode: 'multiply' }} />
+            {/* Mixed flower cluster — yellow, blue, orange */}
+            <Image src="/flower1.png" alt="" width={78} height={140} style={{ position: 'absolute', bottom: -18, left: 360, transform: 'rotate(-8deg)' }} />
+            <Image src="/flower3.png" alt="" width={90} height={162} style={{ position: 'absolute', bottom: -12, left: 400 }} />
+            <Image src="/flower2.png" alt="" width={74} height={130} style={{ position: 'absolute', bottom: -20, left: 440, transform: 'rotate(10deg)' }} />
 
-            <Image src="/grass1.png" alt="" width={90} height={70} style={{ position: 'absolute', bottom: -8, left: 448, mixBlendMode: 'multiply' }} />
-
-            {/* Stray single — yellow marigold */}
-            <Image src="/flower1.png" alt="" width={68} height={118} style={{ position: 'absolute', bottom: -14, left: 520, transform: 'rotate(4deg)', mixBlendMode: 'multiply' }} />
-
-            {/* ── RIGHT SIDE ── */}
-            <Image src="/bush2.png" alt="" width={580} height={435} style={{ position: 'absolute', bottom: -50, right: -30, mixBlendMode: 'multiply' }} />
-            <Image src="/grass4.png" alt="" width={130} height={100} style={{ position: 'absolute', bottom: -12, right: 280, mixBlendMode: 'multiply' }} />
-
-            {/* Blue daisy cluster */}
-            <Image src="/flower3.png" alt="" width={82} height={148} style={{ position: 'absolute', bottom: -18, right: 355, transform: 'rotate(8deg)', mixBlendMode: 'multiply' }} />
-            <Image src="/flower3.png" alt="" width={92} height={166} style={{ position: 'absolute', bottom: -12, right: 392, mixBlendMode: 'multiply' }} />
-            <Image src="/flower3.png" alt="" width={74} height={134} style={{ position: 'absolute', bottom: -24, right: 432, transform: 'rotate(-10deg)', mixBlendMode: 'multiply' }} />
-
-            <Image src="/grass2.png" alt="" width={90} height={70} style={{ position: 'absolute', bottom: -8, right: 452, mixBlendMode: 'multiply' }} />
+            <Image src="/grass1.png" alt="" width={90} height={70} style={{ position: 'absolute', bottom: -6, left: 462 }} />
 
             {/* Stray single — pink poppy */}
-            <Image src="/flower4.png" alt="" width={62} height={112} style={{ position: 'absolute', bottom: -16, right: 524, transform: 'rotate(-5deg)', mixBlendMode: 'multiply' }} />
+            <Image src="/flower4.png" alt="" width={64} height={116} style={{ position: 'absolute', bottom: -14, left: 530, transform: 'rotate(5deg)' }} />
+
+            {/* ── RIGHT SIDE ── */}
+            {/* bush2 is a wide flat mound — less whitespace below, so smaller offset */}
+            <Image src="/bush2.png" alt="" width={580} height={435} style={{ position: 'absolute', bottom: 0, right: -20 }} />
+            <Image src="/grass4.png" alt="" width={130} height={100} style={{ position: 'absolute', bottom: -8, right: 290 }} />
+
+            {/* Mixed flower cluster — orange, pink, blue */}
+            <Image src="/flower2.png" alt="" width={80} height={144} style={{ position: 'absolute', bottom: -16, right: 360, transform: 'rotate(7deg)' }} />
+            <Image src="/flower4.png" alt="" width={68} height={124} style={{ position: 'absolute', bottom: -10, right: 400, transform: 'rotate(-4deg)' }} />
+            <Image src="/flower3.png" alt="" width={76} height={138} style={{ position: 'absolute', bottom: -20, right: 440, transform: 'rotate(-9deg)' }} />
+
+            <Image src="/grass2.png" alt="" width={90} height={70} style={{ position: 'absolute', bottom: -6, right: 462 }} />
+
+            {/* Stray single — yellow marigold */}
+            <Image src="/flower1.png" alt="" width={66} height={120} style={{ position: 'absolute', bottom: -12, right: 532, transform: 'rotate(-5deg)' }} />
           </div>
         </div>
       </body>
