@@ -35,7 +35,7 @@ const aiSections = [
     ],
   },
   {
-    title: "Empire",
+    title: "Morty the Mouse",
     images: [
       "/art/empire/empireMouse1.png",
       "/art/empire/empireMouse2.png",
