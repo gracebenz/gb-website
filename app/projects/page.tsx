@@ -12,7 +12,7 @@ const projects = [
 export default function Projects() {
   return (
     <div className="flex flex-col items-center gap-8">
-      <h2 className="font-serif text-4xl text-sage">Projects</h2>
+      <h2 className="font-serif text-4xl text-ink">Projects</h2>
       <div className="grid gap-6 w-full max-w-2xl">
         {projects.map((p) => (
           <div
