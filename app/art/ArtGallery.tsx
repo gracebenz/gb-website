@@ -48,20 +48,19 @@ const aiSections = [
       "/art/characters/critters3.png",
       "/art/characters/critters4.png",
       "/art/characters/critters6.png",
-      "/art/characters/critters7.png",
     ],
   },
   {
     title: "Dogs",
     images: [
-      "/art/dogs/3dogs.png",
       "/art/dogs/blueDog1.png",
       "/art/dogs/blueDog2.png",
       "/art/dogs/blueDog3.png",
-      "/art/dogs/dogGrass1.png",
+      "/art/dogs/3dogs.png",
       "/art/dogs/sketchDog1.png",
       "/art/dogs/sketchDog2.png",
       "/art/dogs/sketchDog3.png",
+      "/art/dogs/dogGrass1.png",
     ],
   },
   {
