@@ -47,11 +47,8 @@ const aiSections = [
       "/art/characters/critters2.png",
       "/art/characters/critters3.png",
       "/art/characters/critters4.png",
-      "/art/characters/critters5.png",
       "/art/characters/critters6.png",
       "/art/characters/critters7.png",
-      "/art/characters/critters8.png",
-      "/art/characters/critters9.png",
     ],
   },
   {
