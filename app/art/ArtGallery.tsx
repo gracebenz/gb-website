@@ -88,7 +88,6 @@ const aiSections = [
     title: "Invites & Cards",
     images: [
       "/art/invites_cards/holiday2.png",
-      "/art/invites_cards/holiday3.png",
       "/art/invites_cards/holiday6.png",
       "/art/invites_cards/menu1.png",
       "/art/invites_cards/menu2.png",
