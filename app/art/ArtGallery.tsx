@@ -1,0 +1,138 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+
+const tabs = ["AI Generated", "Watercolor", "Digital Illustration", "Acrylic"] as const;
+type Tab = (typeof tabs)[number];
+
+const aiSections = [
+  {
+    title: "Critters",
+    images: [
+      "/art/characters/critters1.png",
+      "/art/characters/critters2.png",
+      "/art/characters/critters3.png",
+      "/art/characters/critters4.png",
+      "/art/characters/critters5.png",
+      "/art/characters/critters6.png",
+      "/art/characters/critters7.png",
+      "/art/characters/critters8.png",
+      "/art/characters/critters9.png",
+    ],
+  },
+  {
+    title: "Dogs",
+    images: [
+      "/art/dogs/3dogs.png",
+      "/art/dogs/blueDog1.png",
+      "/art/dogs/blueDog2.png",
+      "/art/dogs/blueDog3.png",
+      "/art/dogs/dogGrass1.png",
+      "/art/dogs/sketchDog1.png",
+      "/art/dogs/sketchDog2.png",
+      "/art/dogs/sketchDog3.png",
+    ],
+  },
+  {
+    title: "Empire",
+    images: [
+      "/art/empire/empireMouse1.png",
+      "/art/empire/empireMouse2.png",
+      "/art/empire/empireMouse3.png",
+      "/art/empire/empireMouse4.png",
+    ],
+  },
+  {
+    title: "Farmer Jeeks",
+    images: [
+      "/art/farmerJeeks/farmerJeeksBrain1.png",
+      "/art/farmerJeeks/farmerJeeksBrain2.png",
+      "/art/farmerJeeks/farmerJeeksFly1.png",
+      "/art/farmerJeeks/farmerJeeksFly2.png",
+    ],
+  },
+  {
+    title: "Invites & Cards",
+    images: [
+      "/art/invites_cards/holiday1.png",
+      "/art/invites_cards/holiday2.png",
+      "/art/invites_cards/holiday3.png",
+      "/art/invites_cards/holiday4.png",
+      "/art/invites_cards/holiday5.png",
+      "/art/invites_cards/holiday6.png",
+      "/art/invites_cards/menu1.png",
+      "/art/invites_cards/menu2.png",
+      "/art/invites_cards/menu3.png",
+      "/art/invites_cards/soiree1.png",
+    ],
+  },
+  {
+    title: "Abstract",
+    images: [
+      "/art/abstract/landscape.png",
+      "/art/abstract/landscape2.png",
+    ],
+  },
+];
+
+function ImageGrid({ images }: { images: string[] }) {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      {images.map((src) => (
+        <div key={src} className="aspect-square relative overflow-hidden rounded-sm bg-lavender-light">
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function ArtGallery() {
+  const [activeTab, setActiveTab] = useState<Tab>("AI Generated");
+
+  return (
+    <div className="flex flex-col gap-10">
+      {/* Tabs */}
+      <div className="flex flex-wrap gap-2 border-b border-lavender-mid pb-4">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-4 py-1.5 text-xs tracking-widest uppercase transition-colors rounded-full ${
+              activeTab === tab
+                ? "bg-ink text-cream"
+                : "text-ink/50 hover:text-ink"
+            }`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      {/* Content */}
+      {activeTab === "AI Generated" ? (
+        <div className="flex flex-col gap-14">
+          {aiSections.map((section) => (
+            <div key={section.title} className="flex flex-col gap-4">
+              <h3 className="font-serif text-xl text-ink tracking-wide">
+                {section.title}
+              </h3>
+              <ImageGrid images={section.images} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-24 text-ink/40 text-sm tracking-widest uppercase">
+          Coming soon
+        </div>
+      )}
+    </div>
+  );
+}
