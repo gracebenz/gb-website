@@ -3,8 +3,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const tabs = ["AI Generated", "Watercolor", "Digital Illustration", "Acrylic"] as const;
+const tabs = ["AI Generated", "Interior Design", "Watercolor", "Digital Illustration", "Acrylic"] as const;
 type Tab = (typeof tabs)[number];
+
+const interiorSections = [
+  { title: "Living Room", images: [] as string[] },
+  { title: "Office", images: [] as string[] },
+  { title: "Kids Room", images: [] as string[] },
+];
 
 const aiSections = [
   {
@@ -158,10 +164,21 @@ export default function ArtGallery() {
         <div className="flex flex-col gap-14">
           {aiSections.map((section) => (
             <div key={section.title} className="flex flex-col gap-4">
-              <h3 className="font-serif text-xl text-ink tracking-wide">
-                {section.title}
-              </h3>
+              <h3 className="font-serif text-xl text-ink tracking-wide">{section.title}</h3>
               <ImageGrid images={section.images} onSelect={setLightboxSrc} />
+            </div>
+          ))}
+        </div>
+      ) : activeTab === "Interior Design" ? (
+        <div className="flex flex-col gap-14">
+          {interiorSections.map((section) => (
+            <div key={section.title} className="flex flex-col gap-4">
+              <h3 className="font-serif text-xl text-ink tracking-wide">{section.title}</h3>
+              {section.images.length > 0 ? (
+                <ImageGrid images={section.images} onSelect={setLightboxSrc} />
+              ) : (
+                <p className="text-ink/30 text-sm tracking-widest uppercase">Coming soon</p>
+              )}
             </div>
           ))}
         </div>
