@@ -7,9 +7,36 @@ const tabs = ["AI Generated", "Interior Design", "Watercolor", "Digital Illustra
 type Tab = (typeof tabs)[number];
 
 const interiorSections = [
-  { title: "Living Room", images: [] as string[] },
-  { title: "Office", images: [] as string[] },
-  { title: "Kids Room", images: [] as string[] },
+  {
+    title: "Living Room",
+    images: [
+      "/art/interior_design/livingRoom1.JPG",
+      "/art/interior_design/livingRoom2.PNG",
+      "/art/interior_design/livingRoom3.JPG",
+      "/art/interior_design/livingRoom4.JPG",
+      "/art/interior_design/livingRoom5.JPG",
+      "/art/interior_design/livingRoom6.PNG",
+      "/art/interior_design/livingRoom7.PNG",
+      "/art/interior_design/livingRoom8.PNG",
+      "/art/interior_design/livingRoom9.PNG",
+    ],
+  },
+  {
+    title: "Office",
+    images: [
+      "/art/interior_design/office1.JPG",
+      "/art/interior_design/office2.PNG",
+      "/art/interior_design/office3.PNG",
+      "/art/interior_design/office4.JPG",
+    ],
+  },
+  {
+    title: "Kids Room",
+    images: [
+      "/art/interior_design/kidsRoom1.JPG",
+      "/art/interior_design/kidsRoom2.JPG",
+    ],
+  },
 ];
 
 const aiSections = [
