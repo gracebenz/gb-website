@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const tabs = ["AI Generated", "Watercolor", "Digital Illustration", "Acrylic"] as const;
@@ -40,7 +40,6 @@ const aiSections = [
       "/art/empire/empireMouse1.png",
       "/art/empire/empireMouse2.png",
       "/art/empire/empireMouse3.png",
-      "/art/empire/empireMouse4.png",
     ],
   },
   {
@@ -76,19 +75,54 @@ const aiSections = [
   },
 ];
 
-function ImageGrid({ images }: { images: string[] }) {
+function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 cursor-pointer"
+      onClick={onClose}
+    >
+      <div className="relative max-w-4xl max-h-[90vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
+        <Image
+          src={src}
+          alt=""
+          fill
+          className="object-contain"
+          sizes="100vw"
+        />
+      </div>
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-6 text-white text-2xl font-light leading-none hover:opacity-70 transition-opacity"
+      >
+        ✕
+      </button>
+    </div>
+  );
+}
+
+function ImageGrid({ images, onSelect }: { images: string[]; onSelect: (src: string) => void }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
       {images.map((src) => (
-        <div key={src} className="aspect-square relative overflow-hidden rounded-sm bg-lavender-light">
+        <button
+          key={src}
+          onClick={() => onSelect(src)}
+          className="aspect-square relative overflow-hidden rounded-sm bg-lavender-light group"
+        >
           <Image
             src={src}
             alt=""
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
           />
-        </div>
+        </button>
       ))}
     </div>
   );
@@ -96,9 +130,12 @@ function ImageGrid({ images }: { images: string[] }) {
 
 export default function ArtGallery() {
   const [activeTab, setActiveTab] = useState<Tab>("AI Generated");
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   return (
     <div className="flex flex-col gap-10">
+      {lightboxSrc && <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
+
       {/* Tabs */}
       <div className="flex flex-wrap gap-2 border-b border-lavender-mid pb-4">
         {tabs.map((tab) => (
@@ -124,7 +161,7 @@ export default function ArtGallery() {
               <h3 className="font-serif text-xl text-ink tracking-wide">
                 {section.title}
               </h3>
-              <ImageGrid images={section.images} />
+              <ImageGrid images={section.images} onSelect={setLightboxSrc} />
             </div>
           ))}
         </div>
