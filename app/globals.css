@@ -1,25 +1,112 @@
 @import "tailwindcss";
 
-@theme {
-  --color-cream: #FAF7F2;
-  --color-lavender: #EDD9ED;
-  --color-lavender-mid: #C9A8C9;
-  --color-slate: #5B7A8A;
-  --color-amber: #F0A830;
-  --color-coral: #E8836A;
-  --color-sage: #6B9E7A;
-  --color-grape: #9B7BB8;
-  --color-ink: #3A3535;
-  --color-sky: #C8DFE8;
-  --color-sky-dark: #3D6B78;
-}
-
 @theme inline {
-  --font-serif: var(--font-lora);
+  --font-serif: var(--font-cormorant);
   --font-sans: var(--font-dm-sans);
 }
 
+@theme {
+  /* Light editorial palette */
+  --color-parchment: #FAF5EE;
+  --color-surface: #F2E9DE;
+  --color-ink: #1C1815;
+  --color-ink-mid: #4A4340;
+  --color-muted: #8A7F74;
+  --color-border: #E0D5C8;
+  --color-grape: #9B7BB8;
+  --color-lavender: #EDD9ED;
+  --color-lavender-mid: #C9A8C9;
+}
+
 body {
-  background-color: #FAF7F2;
-  color: #3A3535;
+  background-color: #FAF5EE;
+  color: #1C1815;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Animations ────────────────────────────────── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes line-grow {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+.anim-fade-up {
+  opacity: 0;
+  animation: fade-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-fade-in {
+  opacity: 0;
+  animation: fade-in 0.6s ease forwards;
+}
+
+.delay-0  { animation-delay: 0s;    }
+.delay-1  { animation-delay: 0.08s; }
+.delay-2  { animation-delay: 0.18s; }
+.delay-3  { animation-delay: 0.28s; }
+.delay-4  { animation-delay: 0.42s; }
+.delay-5  { animation-delay: 0.56s; }
+.delay-6  { animation-delay: 0.72s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up,
+  .anim-fade-in {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ── Editorial card hover ──────────────────────── */
+
+.editorial-card {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+}
+
+.editorial-card:hover {
+  transform: translateY(-5px);
+  border-color: #C9A8C9;
+  box-shadow: 0 12px 40px rgba(28, 24, 21, 0.06);
+  z-index: 10;
+}
+
+/* ── Underline slide ───────────────────────────── */
+
+.link-slide {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-slide::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #9B7BB8;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-slide:hover::after {
+  width: 100%;
 }

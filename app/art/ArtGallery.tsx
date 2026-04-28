@@ -107,42 +107,46 @@ function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 cursor-pointer"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-4 cursor-pointer anim-fade-in delay-0"
       onClick={onClose}
     >
-      <div className="relative max-w-4xl max-h-[90vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
-        <Image
-          src={src}
-          alt=""
-          fill
-          className="object-contain"
-          sizes="100vw"
-        />
+      <div
+        className="relative max-w-4xl max-h-[90vh] w-full h-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Image src={src} alt="" fill className="object-contain" sizes="100vw" />
       </div>
       <button
         onClick={onClose}
-        className="absolute top-4 right-6 text-white text-2xl font-light leading-none hover:opacity-70 transition-opacity"
+        className="absolute top-6 right-8 font-sans text-[10px] tracking-[0.35em] uppercase text-parchment/60 hover:text-parchment transition-colors duration-200"
+        aria-label="Close"
       >
-        ✕
+        Close ✕
       </button>
     </div>
   );
 }
 
-function ImageGrid({ images, onSelect }: { images: string[]; onSelect: (src: string) => void }) {
+function ImageGrid({
+  images,
+  onSelect,
+}: {
+  images: string[];
+  onSelect: (src: string) => void;
+}) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
       {images.map((src) => (
         <button
           key={src}
           onClick={() => onSelect(src)}
-          className="aspect-square relative overflow-hidden rounded-sm bg-lavender-light group"
+          className="aspect-square relative overflow-hidden bg-surface group cursor-pointer"
         >
           <Image
             src={src}
             alt=""
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
           />
         </button>
@@ -157,18 +161,20 @@ export default function ArtGallery() {
 
   return (
     <div className="flex flex-col gap-10">
-      {lightboxSrc && <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
+      {lightboxSrc && (
+        <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />
+      )}
 
-      {/* Tabs */}
-      <div className="flex flex-wrap gap-2 border-b border-lavender-mid pb-4">
+      {/* Tabs — editorial underline style */}
+      <div className="flex flex-wrap gap-0 border-b border-border">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-1.5 text-xs tracking-widest uppercase transition-colors rounded-full ${
+            className={`font-sans text-[9px] tracking-[0.4em] uppercase px-4 py-3 border-b-[1.5px] -mb-px transition-colors duration-200 ${
               activeTab === tab
-                ? "bg-ink text-cream"
-                : "text-ink/50 hover:text-ink"
+                ? "border-grape text-grape"
+                : "border-transparent text-muted hover:text-ink"
             }`}
           >
             {tab}
@@ -181,7 +187,8 @@ export default function ArtGallery() {
         <div className="flex flex-col gap-14">
           {aiSections.map((section) => (
             <div key={section.title} className="flex flex-col gap-4">
-              <h3 className="font-serif text-xl text-ink tracking-wide">{section.title}</h3>
+              <h3 className="font-serif font-light text-2xl text-ink">{section.title}</h3>
+              <div className="w-6 border-t border-grape/30" />
               <ImageGrid images={section.images} onSelect={setLightboxSrc} />
             </div>
           ))}
@@ -190,18 +197,23 @@ export default function ArtGallery() {
         <div className="flex flex-col gap-14">
           {interiorSections.map((section) => (
             <div key={section.title} className="flex flex-col gap-4">
-              <h3 className="font-serif text-xl text-ink tracking-wide">{section.title}</h3>
+              <h3 className="font-serif font-light text-2xl text-ink">{section.title}</h3>
+              <div className="w-6 border-t border-grape/30" />
               {section.images.length > 0 ? (
                 <ImageGrid images={section.images} onSelect={setLightboxSrc} />
               ) : (
-                <p className="text-ink/30 text-sm tracking-widest uppercase">Coming soon</p>
+                <p className="font-sans text-[10px] tracking-[0.4em] uppercase text-muted py-8">
+                  Coming soon
+                </p>
               )}
             </div>
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 text-ink/40 text-sm tracking-widest uppercase">
-          Coming soon
+        <div className="text-center py-24">
+          <p className="font-sans text-[10px] tracking-[0.4em] uppercase text-muted">
+            Coming soon
+          </p>
         </div>
       )}
     </div>

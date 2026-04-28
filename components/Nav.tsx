@@ -14,17 +14,15 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex justify-center gap-1 pt-4 pb-2">
+    <nav className="flex items-center gap-6 sm:gap-8">
       {tabs.map((tab) => {
         const isActive = pathname === tab.href;
         return (
           <Link
             key={tab.href}
             href={tab.href}
-            className={`px-5 py-2 text-sm tracking-widest uppercase transition-all duration-200 rounded-full ${
-              isActive
-                ? "bg-lavender text-slate font-medium"
-                : "text-lavender-mid hover:text-slate hover:bg-lavender/40"
+            className={`font-sans text-[10px] tracking-[0.35em] uppercase transition-colors duration-200 link-slide pb-0.5 ${
+              isActive ? "text-grape" : "text-muted hover:text-ink"
             }`}
           >
             {tab.label}

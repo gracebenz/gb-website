@@ -1,21 +1,18 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
+import { useState, useRef, useEffect } from "react";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url
-).toString();
+const PDFJS_CDN = "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.296/build";
 
 export default function BookViewer({ file }: { file: string }) {
-  const [numPages, setNumPages] = useState<number>(0);
-  const [pageNumber, setPageNumber] = useState<number>(1);
-  const [containerWidth, setContainerWidth] = useState<number>(600);
-  const [coverDims, setCoverDims] = useState<{ width: number; height: number } | null>(null);
+  const [numPages, setNumPages] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [containerWidth, setContainerWidth] = useState(600);
+  const [ready, setReady] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const pdfRef = useRef<any>(null);
+  const renderTaskRef = useRef<any>(null);
 
   useEffect(() => {
     const measure = () => {
@@ -28,66 +25,90 @@ export default function BookViewer({ file }: { file: string }) {
     return () => window.removeEventListener("resize", measure);
   }, []);
 
-  const onDocumentLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
-    setNumPages(numPages);
-  }, []);
+  // Load pdfjs and the PDF document entirely from CDN — webpack never touches pdfjs-dist
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      // webpackIgnore: true prevents webpack from bundling this import; browser fetches it natively
+      const pdfjs = await import(/* webpackIgnore: true */ "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.296/build/pdf.min.mjs" as any);
+      pdfjs.GlobalWorkerOptions.workerSrc = `${PDFJS_CDN}/pdf.worker.min.mjs`;
+      const pdf = await pdfjs.getDocument(file).promise;
+      if (!cancelled) {
+        pdfRef.current = pdf;
+        setNumPages(pdf.numPages);
+        setReady(true);
+      }
+    }
+    load().catch(console.error);
+    return () => { cancelled = true; };
+  }, [file]);
 
-  const onCoverLoadSuccess = useCallback((page: { width: number; height: number }) => {
-    setCoverDims({ width: page.width, height: page.height });
-  }, []);
-
-  // Cover renders at containerWidth. Its display height = containerWidth * (coverH / coverW).
-  // All interior pages render at that same height so every page feels the same size.
-  const coverDisplayHeight = coverDims
-    ? containerWidth * (coverDims.height / coverDims.width)
-    : undefined;
+  // Render current page to canvas
+  useEffect(() => {
+    if (!ready || !pdfRef.current || !canvasRef.current) return;
+    async function render() {
+      if (renderTaskRef.current) renderTaskRef.current.cancel();
+      const page = await pdfRef.current.getPage(pageNumber);
+      if (!canvasRef.current) return;
+      const viewport = page.getViewport({ scale: 1 });
+      const scale = containerWidth / viewport.width;
+      const scaled = page.getViewport({ scale });
+      const canvas = canvasRef.current;
+      canvas.width = scaled.width;
+      canvas.height = scaled.height;
+      const ctx = canvas.getContext("2d")!;
+      renderTaskRef.current = page.render({ canvasContext: ctx, viewport: scaled });
+      await renderTaskRef.current.promise;
+    }
+    render().catch((e) => {
+      if (e?.name !== "RenderingCancelledException") console.error(e);
+    });
+  }, [ready, pageNumber, containerWidth]);
 
   return (
-    <div ref={containerRef} className="flex flex-col items-center gap-6 w-full">
-      <Document
-        file={file}
-        onLoadSuccess={onDocumentLoadSuccess}
-        className="shadow-lg rounded-xl overflow-hidden"
-      >
-        <Page
-          pageNumber={pageNumber}
-          width={pageNumber === 1 ? containerWidth : undefined}
-          height={pageNumber !== 1 ? coverDisplayHeight : undefined}
-          onLoadSuccess={pageNumber === 1 ? onCoverLoadSuccess : undefined}
-          renderTextLayer={false}
-          renderAnnotationLayer={false}
-        />
-      </Document>
+    <div ref={containerRef} className="flex flex-col items-center gap-8 w-full">
+      <canvas
+        ref={canvasRef}
+        className="shadow-[0_8px_40px_rgba(28,24,21,0.12)]"
+      />
 
-      {/* Page controls */}
-      <div className="flex items-center gap-4">
-        <button
-          onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
-          disabled={pageNumber <= 1}
-          className="px-4 py-2 rounded-full bg-lavender text-slate text-sm tracking-widest uppercase disabled:opacity-30 hover:bg-lavender/70 transition-colors"
-        >
-          ← Prev
-        </button>
-        <span className="text-sm text-ink/50 tracking-widest">
-          {pageNumber} / {numPages}
-        </span>
-        <button
-          onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
-          disabled={pageNumber >= numPages}
-          className="px-4 py-2 rounded-full bg-lavender text-slate text-sm tracking-widest uppercase disabled:opacity-30 hover:bg-lavender/70 transition-colors"
-        >
-          Next →
-        </button>
-      </div>
+      {!ready && (
+        <p className="font-sans text-[10px] tracking-[0.4em] uppercase text-muted">
+          Loading…
+        </p>
+      )}
 
-      {/* Download link */}
-      <a
-        href={file}
-        download
-        className="text-xs tracking-widest uppercase text-lavender-mid hover:text-ink transition-colors"
-      >
-        Download PDF
-      </a>
+      {ready && (
+        <>
+          <div className="flex items-center gap-6">
+            <button
+              onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
+              disabled={pageNumber <= 1}
+              className="font-sans text-[9px] tracking-[0.4em] uppercase text-muted border border-border px-5 py-2.5 hover:border-grape hover:text-grape transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              ← Prev
+            </button>
+            <span className="font-sans text-[10px] tracking-[0.3em] text-muted tabular-nums">
+              {pageNumber} / {numPages}
+            </span>
+            <button
+              onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
+              disabled={pageNumber >= numPages}
+              className="font-sans text-[9px] tracking-[0.4em] uppercase text-muted border border-border px-5 py-2.5 hover:border-grape hover:text-grape transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              Next →
+            </button>
+          </div>
+
+          <a
+            href={file}
+            download
+            className="font-sans text-[9px] tracking-[0.4em] uppercase text-muted hover:text-grape transition-colors duration-300"
+          >
+            Download PDF
+          </a>
+        </>
+      )}
     </div>
   );
 }
