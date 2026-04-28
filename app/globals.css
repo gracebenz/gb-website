@@ -16,6 +16,8 @@
   --color-grape: #9B7BB8;
   --color-lavender: #EDD9ED;
   --color-lavender-mid: #C9A8C9;
+  --color-honey: #F5E7C2;
+  --color-sage: #C8E0D4;
 }
 
 body {
@@ -84,8 +86,8 @@ body {
 
 .editorial-card:hover {
   transform: translateY(-5px);
-  border-color: #C9A8C9;
-  box-shadow: 0 12px 40px rgba(28, 24, 21, 0.06);
+  border-color: rgba(28, 24, 21, 0.18);
+  box-shadow: 0 12px 40px rgba(28, 24, 21, 0.09);
   z-index: 10;
 }
 

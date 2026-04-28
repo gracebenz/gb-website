@@ -35,11 +35,8 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
 
           {/* ── Header ── */}
-          <header className="relative z-20 px-6 sm:px-12 pt-8 pb-5 flex items-end justify-between gap-4">
-            <a href="/" className="group flex flex-col leading-none gap-1">
-              <span className="font-serif font-light text-2xl tracking-[0.2em] uppercase text-ink block">
-                Grace Benz
-              </span>
+          <header className="relative z-20 px-6 sm:px-12 pt-5 pb-4 flex items-end justify-between gap-4">
+            <a href="/" className="group">
               <span className="font-sans text-[9px] tracking-[0.45em] uppercase text-muted group-hover:text-grape transition-colors duration-300 block">
                 Canvas &amp; Code
               </span>

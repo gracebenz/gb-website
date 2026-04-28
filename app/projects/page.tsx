@@ -46,7 +46,7 @@ export default function Projects() {
         <h2 className="font-serif font-light text-5xl sm:text-6xl text-ink leading-none">
           Pet Projects
         </h2>
-        <div className="w-10 border-t border-grape/40 mt-1" />
+        <div className="w-10 border-t border-sage mt-1" />
         <p className="font-sans text-sm text-muted leading-relaxed max-w-md mt-1">
           Things built for fun and for friends.
         </p>
@@ -122,7 +122,7 @@ export default function Projects() {
           {websites.map((site, i) => (
             <div
               key={i}
-              className={`anim-fade-up bg-parchment p-7 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 delay-${i + 5}`}
+              className={`anim-fade-up bg-parchment border border-border p-7 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 delay-${i + 5}`}
             >
               <div className="flex flex-col gap-2">
                 <p
