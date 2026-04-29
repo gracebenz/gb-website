@@ -39,18 +39,18 @@ export default function Home() {
     <div className="flex flex-col gap-8 sm:gap-12">
 
       {/* ── HERO ────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-10 overflow-visible min-h-[160px]">
+      <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-8 overflow-visible min-h-[140px]">
 
         {/* Illustration accents */}
         <div className="absolute bottom-0 -left-6 sm:-left-10 pointer-events-none select-none">
-          <Image src="/pinkBlueCluster.png" alt="" width={170} height={157} />
+          <Image src="/pinkBlueCluster.png" alt="" width={210} height={194} />
         </div>
         <div className="absolute bottom-0 -right-6 sm:-right-10 pointer-events-none select-none">
           <Image src="/yellowCluster.png" alt="" width={150} height={196} />
         </div>
 
         {/* Name + tagline */}
-        <div className="relative z-10 flex flex-col items-center gap-6">
+        <div className="relative z-10 flex flex-col items-center gap-3">
           <h1
             className="anim-fade-up delay-0 font-serif font-light leading-none"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3rem)" }}
@@ -59,7 +59,7 @@ export default function Home() {
             {" "}
             <span className="italic text-grape tracking-[-0.02em]">Benz</span>
           </h1>
-          <div className="anim-fade-up delay-1 flex flex-col items-center gap-4">
+          <div className="anim-fade-up delay-1 flex flex-col items-center gap-3">
             <div className="w-32 h-px bg-border" />
             <span className="font-sans text-[10px] tracking-[0.42em] uppercase text-muted whitespace-nowrap">
               Illustrator · Author · Chronic Side-Project Starter
@@ -74,12 +74,12 @@ export default function Home() {
         {/* 01 · Books — wide */}
         <Link
           href={sections[0].href}
-          className="editorial-card anim-fade-up delay-1 md:col-span-2 group bg-lavender border border-ink/10 rounded-2xl p-10 flex flex-col gap-7 cursor-pointer"
+          className="editorial-card anim-fade-up delay-1 md:col-span-2 group bg-lavender border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
         >
           <div className="flex items-start justify-between">
             <span
               className="font-serif font-light leading-none text-ink/20 select-none"
-              style={{ fontSize: "clamp(5rem, 11vw, 9rem)" }}
+              style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
             >
               {sections[0].index}
             </span>
@@ -103,12 +103,12 @@ export default function Home() {
         {/* 02 · Art — single column */}
         <Link
           href={sections[1].href}
-          className="editorial-card anim-fade-up delay-2 group bg-honey border border-ink/10 rounded-2xl p-10 flex flex-col gap-7 cursor-pointer"
+          className="editorial-card anim-fade-up delay-2 group bg-honey border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
         >
           <div className="flex items-start justify-between">
             <span
               className="font-serif font-light leading-none text-ink/20 select-none"
-              style={{ fontSize: "clamp(4rem, 8vw, 7rem)" }}
+              style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
             >
               {sections[1].index}
             </span>
@@ -132,12 +132,12 @@ export default function Home() {
         {/* 03 · Projects — full width bottom */}
         <Link
           href={sections[2].href}
-          className="editorial-card anim-fade-up delay-3 md:col-span-3 group bg-sage border border-ink/10 rounded-2xl p-10 flex flex-col gap-7 cursor-pointer"
+          className="editorial-card anim-fade-up delay-3 md:col-span-3 group bg-sage border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
         >
           <div className="flex items-start justify-between">
             <span
               className="font-serif font-light leading-none text-ink/20 select-none"
-              style={{ fontSize: "clamp(4rem, 6vw, 5.5rem)" }}
+              style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)" }}
             >
               {sections[2].index}
             </span>
