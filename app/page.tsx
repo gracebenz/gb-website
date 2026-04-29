@@ -47,17 +47,17 @@ export default function Home() {
         </div>
 
         {/* Name + tagline */}
-        <div className="relative z-10 flex flex-col items-center gap-5">
+        <div className="relative z-10 flex flex-col items-center gap-6">
           <h1
             className="anim-fade-up delay-0 font-serif font-light leading-none"
-            style={{ fontSize: "clamp(3rem, 7vw, 5rem)" }}
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3rem)" }}
           >
             <span className="text-ink tracking-[-0.02em]">Grace</span>
             {" "}
             <span className="italic text-grape tracking-[-0.02em]">Benz</span>
           </h1>
-          <div className="anim-fade-up delay-1 flex flex-col items-center gap-3">
-            <div className="w-16 h-px bg-border" />
+          <div className="anim-fade-up delay-1 flex flex-col items-center gap-4">
+            <div className="w-32 h-px bg-border" />
             <span className="font-sans text-[10px] tracking-[0.42em] uppercase text-muted whitespace-nowrap">
               Illustrator · Author · Chronic Side-Project Starter
             </span>
@@ -66,12 +66,12 @@ export default function Home() {
       </section>
 
       {/* ── EDITORIAL GRID ──────────────────────────── */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
 
         {/* 01 · Books — wide */}
         <Link
           href={sections[0].href}
-          className="editorial-card anim-fade-up delay-1 md:col-span-2 group bg-lavender border border-ink/10 p-10 flex flex-col gap-7 cursor-pointer"
+          className="editorial-card anim-fade-up delay-1 md:col-span-2 group bg-lavender border border-ink/10 rounded-2xl p-10 flex flex-col gap-7 cursor-pointer"
         >
           <div className="flex items-start justify-between">
             <span
@@ -100,7 +100,7 @@ export default function Home() {
         {/* 02 · Art — single column */}
         <Link
           href={sections[1].href}
-          className="editorial-card anim-fade-up delay-2 group bg-honey border border-ink/10 p-10 flex flex-col gap-7 cursor-pointer"
+          className="editorial-card anim-fade-up delay-2 group bg-honey border border-ink/10 rounded-2xl p-10 flex flex-col gap-7 cursor-pointer"
         >
           <div className="flex items-start justify-between">
             <span
@@ -129,7 +129,7 @@ export default function Home() {
         {/* 03 · Projects — full width bottom */}
         <Link
           href={sections[2].href}
-          className="editorial-card anim-fade-up delay-3 md:col-span-3 group bg-sage border border-ink/10 p-10 flex flex-col gap-7 cursor-pointer"
+          className="editorial-card anim-fade-up delay-3 md:col-span-3 group bg-sage border border-ink/10 rounded-2xl p-10 flex flex-col gap-7 cursor-pointer"
         >
           <div className="flex items-start justify-between">
             <span
