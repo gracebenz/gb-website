@@ -36,7 +36,7 @@ export default function Home() {
     <div className="flex flex-col gap-12 sm:gap-16">
 
       {/* ── HERO ────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center justify-center text-center pt-6 pb-10 overflow-visible min-h-[160px]">
+      <section className="relative flex flex-col items-center justify-center text-center pt-10 pb-14 overflow-visible min-h-[220px]">
 
         {/* Illustration accents */}
         <div className="absolute bottom-0 -left-6 sm:-left-10 pointer-events-none select-none">
@@ -47,27 +47,26 @@ export default function Home() {
         </div>
 
         {/* Name + tagline */}
-        <div className="relative z-10 flex flex-col items-center gap-3">
+        <div className="relative z-10 flex flex-col items-center gap-5">
           <h1
             className="anim-fade-up delay-0 font-serif font-light leading-none"
-            style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)" }}
+            style={{ fontSize: "clamp(3rem, 7vw, 5rem)" }}
           >
-            <span className="text-ink tracking-[-0.01em]">Grace</span>
+            <span className="text-ink tracking-[-0.02em]">Grace</span>
             {" "}
-            <span className="italic text-grape tracking-[-0.01em]">Benz</span>
+            <span className="italic text-grape tracking-[-0.02em]">Benz</span>
           </h1>
-          <p className="anim-fade-up delay-1 flex items-center gap-4 sm:gap-6">
-            <span className="h-px bg-border block w-8 sm:w-12" />
+          <div className="anim-fade-up delay-1 flex flex-col items-center gap-3">
+            <div className="w-16 h-px bg-border" />
             <span className="font-sans text-[10px] tracking-[0.42em] uppercase text-muted whitespace-nowrap">
               Illustrator · Author · Chronic Side-Project Starter
             </span>
-            <span className="h-px bg-border block w-8 sm:w-12" />
-          </p>
+          </div>
         </div>
       </section>
 
       {/* ── EDITORIAL GRID ──────────────────────────── */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
 
         {/* 01 · Books — wide */}
         <Link
