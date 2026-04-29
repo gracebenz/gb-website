@@ -39,7 +39,7 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="flex-1 flex flex-col justify-center gap-4 sm:gap-5">
+    <div className="flex-1 flex flex-col justify-center gap-4 sm:gap-5 pb-[8vh]">
 
       {/* ── HERO ────────────────────────────────────── */}
       <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-4 overflow-visible min-h-[140px]">
@@ -77,10 +77,10 @@ export default function Home() {
         {/* 01 · Books — wide */}
         <Link
           href={sections[0].href}
-          className="editorial-card anim-fade-up delay-1 md:col-span-2 group bg-lavender border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
+          className="editorial-card anim-fade-up delay-1 md:col-span-2 group bg-lavender border border-ink/10 rounded-2xl p-8 flex flex-col gap-5 cursor-pointer"
         >
           <span
-            className="absolute top-7 right-7 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
+            className="absolute top-8 right-8 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
             style={{ color: sections[0].tagColor }}
           >
             {sections[0].tag}
@@ -110,10 +110,10 @@ export default function Home() {
         {/* 02 · Art — single column */}
         <Link
           href={sections[1].href}
-          className="editorial-card anim-fade-up delay-2 group bg-honey border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
+          className="editorial-card anim-fade-up delay-2 group bg-honey border border-ink/10 rounded-2xl p-8 flex flex-col gap-5 cursor-pointer"
         >
           <span
-            className="absolute top-7 right-7 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
+            className="absolute top-8 right-8 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
             style={{ color: sections[1].tagColor }}
           >
             {sections[1].tag}
@@ -143,10 +143,10 @@ export default function Home() {
         {/* 03 · Projects — full width bottom */}
         <Link
           href={sections[2].href}
-          className="editorial-card anim-fade-up delay-3 md:col-span-3 group bg-sage border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
+          className="editorial-card anim-fade-up delay-3 md:col-span-3 group bg-sage border border-ink/10 rounded-2xl p-8 flex flex-col gap-5 cursor-pointer"
         >
           <span
-            className="absolute top-7 right-7 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
+            className="absolute top-8 right-8 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
             style={{ color: sections[2].tagColor }}
           >
             {sections[2].tag}
@@ -157,22 +157,20 @@ export default function Home() {
           >
             {sections[2].index}
           </span>
-          <div className="flex-1 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <div className="flex-1">
-              <h2
-                className="font-serif text-3xl sm:text-4xl font-light mb-2"
-                style={{ color: sections[2].titleColor }}
-              >
-                {sections[2].title}
-              </h2>
-              <p className="font-sans text-sm text-ink-mid leading-relaxed">
-                {sections[2].description}
-              </p>
-            </div>
-            <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300 shrink-0 self-end">
-              {sections[2].cta} →
-            </span>
+          <div className="flex-1">
+            <h2
+              className="font-serif text-3xl sm:text-4xl font-light mb-2"
+              style={{ color: sections[2].titleColor }}
+            >
+              {sections[2].title}
+            </h2>
+            <p className="font-sans text-sm text-ink-mid leading-relaxed max-w-2xl">
+              {sections[2].description}
+            </p>
           </div>
+          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300 self-end">
+            {sections[2].cta} →
+          </span>
         </Link>
       </section>
 
