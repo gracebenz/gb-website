@@ -17,7 +17,7 @@ const sections = [
     index: "02",
     tag: "Art & Illustration",
     tagColor: "#B8963C",
-    titleColor: "#9A7520",
+    titleColor: "#7A5C14",
     title: "Gallery",
     description:
       "Paintings, watercolors, AI-generated characters, and interior mood boards — made slowly and with love.",
@@ -39,7 +39,7 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="flex-1 flex flex-col justify-center gap-4 sm:gap-5 pb-[8vh]">
+    <div className="flex-1 flex flex-col gap-4 sm:gap-5">
 
       {/* ── HERO ────────────────────────────────────── */}
       <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-4 overflow-visible min-h-[140px]">
@@ -72,6 +72,7 @@ export default function Home() {
       </section>
 
       {/* ── EDITORIAL GRID ──────────────────────────── */}
+      <div className="flex-1 flex flex-col justify-center">
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
 
         {/* 01 · Books — wide */}
@@ -98,7 +99,7 @@ export default function Home() {
             >
               {sections[0].title}
             </h2>
-            <p className="font-sans text-sm text-ink-mid leading-relaxed">
+            <p className="font-sans text-[15px] text-ink-mid leading-relaxed">
               {sections[0].description}
             </p>
           </div>
@@ -131,7 +132,7 @@ export default function Home() {
             >
               {sections[1].title}
             </h2>
-            <p className="font-sans text-sm text-ink-mid leading-relaxed">
+            <p className="font-sans text-[15px] text-ink-mid leading-relaxed">
               {sections[1].description}
             </p>
           </div>
@@ -164,7 +165,7 @@ export default function Home() {
             >
               {sections[2].title}
             </h2>
-            <p className="font-sans text-sm text-ink-mid leading-relaxed max-w-2xl">
+            <p className="font-sans text-[15px] text-ink-mid leading-relaxed max-w-2xl">
               {sections[2].description}
             </p>
           </div>
@@ -173,6 +174,7 @@ export default function Home() {
           </span>
         </Link>
       </section>
+      </div>
 
     </div>
   );
