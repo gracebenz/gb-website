@@ -44,14 +44,14 @@ export default function RootLayout({
             <Nav />
           </header>
 
-          <main className="flex-1 max-w-6xl mx-auto w-full px-6 sm:px-12 py-16">
+          <main className="flex-1 max-w-6xl mx-auto w-full px-6 sm:px-12 pt-8 pb-16 sm:pt-12">
             {children}
           </main>
 
           {/* ── Footer ── */}
           <footer className="relative border-t border-border overflow-hidden pointer-events-none">
             {/* single centered flower */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none select-none">
               <Image src="/flower1.png" alt="" width={22} height={32} />
             </div>
 

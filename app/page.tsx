@@ -5,6 +5,7 @@ const sections = [
   {
     index: "01",
     tag: "Book",
+    tagColor: "#C9A8C9",
     title: "Grumpy Grape",
     description:
       "A children's board book about a very grumpy little grape — and the friends who help him find his smile.",
@@ -14,6 +15,7 @@ const sections = [
   {
     index: "02",
     tag: "Art & Illustration",
+    tagColor: "#B8963C",
     title: "Gallery",
     description:
       "Paintings, watercolors, AI-generated characters, and interior mood boards — made slowly and with love.",
@@ -23,6 +25,7 @@ const sections = [
   {
     index: "03",
     tag: "Projects",
+    tagColor: "#5A9980",
     title: "Pet Projects",
     description:
       "Websites, apps, and browser extensions — including Empire, a party game for 3–10 players.",
@@ -33,10 +36,10 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-12 sm:gap-16">
+    <div className="flex flex-col gap-8 sm:gap-12">
 
       {/* ── HERO ────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center justify-center text-center pt-10 pb-14 overflow-visible min-h-[220px]">
+      <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-10 overflow-visible min-h-[160px]">
 
         {/* Illustration accents */}
         <div className="absolute bottom-0 -left-6 sm:-left-10 pointer-events-none select-none">
@@ -80,7 +83,7 @@ export default function Home() {
             >
               {sections[0].index}
             </span>
-            <span className="font-sans text-[9px] tracking-[0.45em] uppercase text-grape mt-1">
+            <span className="font-sans text-[9px] tracking-[0.45em] uppercase mt-1 whitespace-nowrap shrink-0" style={{ color: sections[0].tagColor }}>
               {sections[0].tag}
             </span>
           </div>
@@ -109,7 +112,7 @@ export default function Home() {
             >
               {sections[1].index}
             </span>
-            <span className="font-sans text-[9px] tracking-[0.45em] uppercase text-grape mt-1">
+            <span className="font-sans text-[9px] tracking-[0.45em] uppercase mt-1 whitespace-nowrap shrink-0" style={{ color: sections[1].tagColor }}>
               {sections[1].tag}
             </span>
           </div>
@@ -138,7 +141,7 @@ export default function Home() {
             >
               {sections[2].index}
             </span>
-            <span className="font-sans text-[9px] tracking-[0.45em] uppercase text-grape mt-1">
+            <span className="font-sans text-[9px] tracking-[0.45em] uppercase mt-1 whitespace-nowrap shrink-0" style={{ color: sections[2].tagColor }}>
               {sections[2].tag}
             </span>
           </div>
