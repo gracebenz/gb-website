@@ -6,6 +6,7 @@ const sections = [
     index: "01",
     tag: "Book",
     tagColor: "#C9A8C9",
+    titleColor: "#7A5A96",
     title: "Grumpy Grape",
     description:
       "A children's board book about a very grumpy little grape — and the friends who help him find his smile.",
@@ -16,6 +17,7 @@ const sections = [
     index: "02",
     tag: "Art & Illustration",
     tagColor: "#B8963C",
+    titleColor: "#9A7520",
     title: "Gallery",
     description:
       "Paintings, watercolors, AI-generated characters, and interior mood boards — made slowly and with love.",
@@ -26,6 +28,7 @@ const sections = [
     index: "03",
     tag: "Projects",
     tagColor: "#5A9980",
+    titleColor: "#3D7868",
     title: "Pet Projects",
     description:
       "Custom websites for friends. Empire — a party game for 3–10 players where everyone picks a secret nickname and tries to guess each other's. Nyx — a Chrome extension that rewrites news headlines in calmer, funnier, or more poetic styles.",
@@ -36,12 +39,12 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-4 sm:gap-5">
+    <div className="flex-1 flex flex-col justify-center gap-4 sm:gap-5">
 
       {/* ── HERO ────────────────────────────────────── */}
       <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-4 overflow-visible min-h-[140px]">
 
-        {/* Illustration accents — nudged down to bleed into cards */}
+        {/* Illustration accents */}
         <div className="absolute -bottom-4 -left-6 sm:-left-10 pointer-events-none select-none">
           <Image src="/pinkBlueCluster.png" alt="" width={210} height={194} />
         </div>
@@ -89,10 +92,13 @@ export default function Home() {
             {sections[0].index}
           </span>
           <div className="flex-1">
-            <h2 className="font-serif text-3xl sm:text-4xl font-light text-ink mb-3">
+            <h2
+              className="font-serif text-3xl sm:text-4xl font-light mb-3"
+              style={{ color: sections[0].titleColor }}
+            >
               {sections[0].title}
             </h2>
-            <p className="font-sans text-sm text-ink-mid leading-relaxed max-w-sm">
+            <p className="font-sans text-sm text-ink-mid leading-relaxed">
               {sections[0].description}
             </p>
           </div>
@@ -119,7 +125,10 @@ export default function Home() {
             {sections[1].index}
           </span>
           <div className="flex-1">
-            <h2 className="font-serif text-3xl sm:text-4xl font-light text-ink mb-3">
+            <h2
+              className="font-serif text-3xl sm:text-4xl font-light mb-3"
+              style={{ color: sections[1].titleColor }}
+            >
               {sections[1].title}
             </h2>
             <p className="font-sans text-sm text-ink-mid leading-relaxed">
@@ -149,11 +158,14 @@ export default function Home() {
             {sections[2].index}
           </span>
           <div className="flex-1 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-light text-ink mb-2">
+            <div className="flex-1">
+              <h2
+                className="font-serif text-3xl sm:text-4xl font-light mb-2"
+                style={{ color: sections[2].titleColor }}
+              >
                 {sections[2].title}
               </h2>
-              <p className="font-sans text-sm text-ink-mid leading-relaxed max-w-xl">
+              <p className="font-sans text-sm text-ink-mid leading-relaxed">
                 {sections[2].description}
               </p>
             </div>
