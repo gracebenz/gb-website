@@ -28,7 +28,7 @@ const sections = [
     tagColor: "#5A9980",
     title: "Pet Projects",
     description:
-      "Websites, apps, and browser extensions — including Empire, a party game for 3–10 players.",
+      "Custom websites for friends. Empire — a party game for 3–10 players where everyone picks a secret nickname and tries to guess each other's. Nyx — a Chrome extension that rewrites news headlines in calmer, funnier, or more poetic styles.",
     href: "/projects",
     cta: "View work",
   },
@@ -36,16 +36,16 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-8 sm:gap-12">
+    <div className="flex flex-col gap-4 sm:gap-5">
 
       {/* ── HERO ────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-8 overflow-visible min-h-[140px]">
+      <section className="relative flex flex-col items-center justify-center text-center pt-4 pb-4 overflow-visible min-h-[140px]">
 
-        {/* Illustration accents */}
-        <div className="absolute bottom-0 -left-6 sm:-left-10 pointer-events-none select-none">
+        {/* Illustration accents — nudged down to bleed into cards */}
+        <div className="absolute -bottom-4 -left-6 sm:-left-10 pointer-events-none select-none">
           <Image src="/pinkBlueCluster.png" alt="" width={210} height={194} />
         </div>
-        <div className="absolute bottom-0 -right-6 sm:-right-10 pointer-events-none select-none">
+        <div className="absolute -bottom-4 -right-6 sm:-right-10 pointer-events-none select-none">
           <Image src="/yellowCluster.png" alt="" width={150} height={196} />
         </div>
 
@@ -76,17 +76,18 @@ export default function Home() {
           href={sections[0].href}
           className="editorial-card anim-fade-up delay-1 md:col-span-2 group bg-lavender border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
         >
-          <div className="flex items-start justify-between">
-            <span
-              className="font-serif font-light leading-none text-ink/20 select-none"
-              style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
-            >
-              {sections[0].index}
-            </span>
-            <span className="font-sans text-[9px] tracking-[0.45em] uppercase mt-1 whitespace-nowrap shrink-0" style={{ color: sections[0].tagColor }}>
-              {sections[0].tag}
-            </span>
-          </div>
+          <span
+            className="absolute top-7 right-7 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
+            style={{ color: sections[0].tagColor }}
+          >
+            {sections[0].tag}
+          </span>
+          <span
+            className="font-serif font-light leading-none text-ink/20 select-none"
+            style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
+          >
+            {sections[0].index}
+          </span>
           <div className="flex-1">
             <h2 className="font-serif text-3xl sm:text-4xl font-light text-ink mb-3">
               {sections[0].title}
@@ -95,7 +96,7 @@ export default function Home() {
               {sections[0].description}
             </p>
           </div>
-          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300">
+          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300 self-end">
             {sections[0].cta} →
           </span>
         </Link>
@@ -105,17 +106,18 @@ export default function Home() {
           href={sections[1].href}
           className="editorial-card anim-fade-up delay-2 group bg-honey border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
         >
-          <div className="flex items-start justify-between">
-            <span
-              className="font-serif font-light leading-none text-ink/20 select-none"
-              style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
-            >
-              {sections[1].index}
-            </span>
-            <span className="font-sans text-[9px] tracking-[0.45em] uppercase mt-1 whitespace-nowrap shrink-0" style={{ color: sections[1].tagColor }}>
-              {sections[1].tag}
-            </span>
-          </div>
+          <span
+            className="absolute top-7 right-7 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
+            style={{ color: sections[1].tagColor }}
+          >
+            {sections[1].tag}
+          </span>
+          <span
+            className="font-serif font-light leading-none text-ink/20 select-none"
+            style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
+          >
+            {sections[1].index}
+          </span>
           <div className="flex-1">
             <h2 className="font-serif text-3xl sm:text-4xl font-light text-ink mb-3">
               {sections[1].title}
@@ -124,7 +126,7 @@ export default function Home() {
               {sections[1].description}
             </p>
           </div>
-          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300">
+          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300 self-end">
             {sections[1].cta} →
           </span>
         </Link>
@@ -134,27 +136,28 @@ export default function Home() {
           href={sections[2].href}
           className="editorial-card anim-fade-up delay-3 md:col-span-3 group bg-sage border border-ink/10 rounded-2xl p-7 flex flex-col gap-5 cursor-pointer"
         >
-          <div className="flex items-start justify-between">
-            <span
-              className="font-serif font-light leading-none text-ink/20 select-none"
-              style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)" }}
-            >
-              {sections[2].index}
-            </span>
-            <span className="font-sans text-[9px] tracking-[0.45em] uppercase mt-1 whitespace-nowrap shrink-0" style={{ color: sections[2].tagColor }}>
-              {sections[2].tag}
-            </span>
-          </div>
-          <div className="flex-1 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+          <span
+            className="absolute top-7 right-7 font-sans text-[9px] tracking-[0.45em] uppercase whitespace-nowrap"
+            style={{ color: sections[2].tagColor }}
+          >
+            {sections[2].tag}
+          </span>
+          <span
+            className="font-serif font-light leading-none text-ink/20 select-none"
+            style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)" }}
+          >
+            {sections[2].index}
+          </span>
+          <div className="flex-1 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
               <h2 className="font-serif text-3xl sm:text-4xl font-light text-ink mb-2">
                 {sections[2].title}
               </h2>
-              <p className="font-sans text-sm text-ink-mid leading-relaxed max-w-md">
+              <p className="font-sans text-sm text-ink-mid leading-relaxed max-w-xl">
                 {sections[2].description}
               </p>
             </div>
-            <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300 shrink-0">
+            <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-ink-mid group-hover:text-grape transition-colors duration-300 shrink-0 self-end">
               {sections[2].cta} →
             </span>
           </div>
