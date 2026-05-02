@@ -44,10 +44,10 @@ export default function Projects() {
 
       {/* ── Page header ── */}
       <div className="flex flex-col gap-2 anim-fade-up delay-0">
-        <p className="font-sans text-[9px] tracking-[0.5em] uppercase" style={{ color: SAGE }}>
+        <p className="font-sans text-[9px] tracking-[0.5em] uppercase text-grape">
           03 · Work
         </p>
-        <h2 className="font-serif font-light text-5xl sm:text-6xl leading-none" style={{ color: "#3D7868" }}>
+        <h2 className="font-serif font-light text-5xl sm:text-6xl text-ink leading-none">
           Pet Projects
         </h2>
         <div className="w-10 border-t border-sage mt-1" />
@@ -99,8 +99,7 @@ export default function Projects() {
               </div>
               {app.wip ? (
                 <span
-                  className="font-sans text-[9px] tracking-[0.4em] uppercase px-5 py-2.5 self-start sm:self-auto shrink-0"
-                  style={{ color: `${SAGE}99`, border: `1px solid ${SAGE}40` }}
+                  className="font-sans text-[9px] tracking-[0.4em] uppercase text-muted/40 border border-border px-5 py-2.5 self-start sm:self-auto shrink-0"
                 >
                   In Progress
                 </span>
@@ -132,7 +131,7 @@ export default function Projects() {
           {websites.map((site, i) => (
             <div
               key={i}
-              className={`anim-fade-up bg-parchment border border-ink/10 rounded-2xl p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 delay-${i + 5}`}
+              className={`anim-fade-up bg-sage/30 border border-ink/10 rounded-2xl p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 delay-${i + 5}`}
             >
               <div className="flex flex-col gap-2">
                 <p
