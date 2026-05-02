@@ -47,7 +47,7 @@ export default function Projects() {
         <p className="font-sans text-[9px] tracking-[0.5em] uppercase" style={{ color: SAGE }}>
           03 · Work
         </p>
-        <h2 className="font-serif font-light text-5xl sm:text-6xl text-ink leading-none">
+        <h2 className="font-serif font-light text-5xl sm:text-6xl leading-none" style={{ color: "#3D7868" }}>
           Pet Projects
         </h2>
         <div className="w-10 border-t border-sage mt-1" />
@@ -62,14 +62,14 @@ export default function Projects() {
           <span className="font-sans text-[9px] tracking-[0.5em] uppercase text-muted shrink-0">
             Apps &amp; Extensions
           </span>
-          <div className="flex-1 border-t border-sage/40" />
+          <div className="flex-1 border-t border-sage/70" />
         </div>
 
         <div className="flex flex-col gap-4 sm:gap-5">
           {apps.map((app, i) => (
             <div
               key={app.title}
-              className={`anim-fade-up bg-parchment border border-ink/10 rounded-2xl p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 delay-${i + 2}`}
+              className={`anim-fade-up border border-ink/10 rounded-2xl p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 delay-${i + 2} ${app.wip ? "bg-parchment" : "bg-sage/30"}`}
             >
               <div className="flex flex-col gap-3 max-w-xl">
                 <div className="flex items-baseline gap-3">
@@ -125,7 +125,7 @@ export default function Projects() {
           <span className="font-sans text-[9px] tracking-[0.5em] uppercase text-muted shrink-0">
             Website Design
           </span>
-          <div className="flex-1 border-t border-sage/40" />
+          <div className="flex-1 border-t border-sage/70" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">

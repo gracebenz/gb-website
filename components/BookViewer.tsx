@@ -49,9 +49,11 @@ export default function BookViewer({ file }: { file: string }) {
     async function render() {
       if (renderTaskRef.current) renderTaskRef.current.cancel();
       const page = await pdfRef.current.getPage(pageNumber);
-      if (!canvasRef.current) return;
+      if (!canvasRef.current || !containerRef.current) return;
+      // Re-measure after the async gap to avoid stale closure width
+      const freshWidth = Math.min(600, containerRef.current.offsetWidth);
       const viewport = page.getViewport({ scale: 1 });
-      const scale = containerWidth / viewport.width;
+      const scale = freshWidth / viewport.width;
       const scaled = page.getViewport({ scale });
       const canvas = canvasRef.current;
       canvas.width = scaled.width;
